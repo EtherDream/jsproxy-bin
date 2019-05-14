@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if [[ $EUID = 0 ]]; then
+if [ $EUID -ne 0 ]; then
   echo "DO NOT RUN AS ROOT"
   exit
 fi

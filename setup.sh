@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if [[ $EUID != 0 ]]; then
+if [ $EUID -eq 0 ]; then
   echo "RUN AS ROOT"
   exit
 fi
