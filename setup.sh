@@ -27,11 +27,14 @@ $GET "$CDN/linux/brotli.gz"
 
 echo "decompress ..."
 gunzip brotli.gz
+chmod +x brotli
+
 ~/brotli -d openresty.tar.br
 ~/brotli -d server.tar.br
 
 tar xf openresty.tar
 tar xf server.tar
+
 rm -f *.tar*
 
 echo "start proxy server ..."
