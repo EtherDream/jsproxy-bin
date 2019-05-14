@@ -3,7 +3,6 @@
 CDN=https://cdn.jsdelivr.net/gh/etherdream/jsproxy-bin@master/dist/
 GET="curl -s -O "
 
-
 echo "download jsproxy server ..."
 $GET $CDN/server.tar.br
 
@@ -26,7 +25,14 @@ tar xf server.tar
 rm -f *.tar*
 rm -f setup.sh
 
-echo "start proxy server ..."
+echo "start nginx ..."
 ./server/run.sh
 
-echo "done"
+echo "check nginx status ..."
+isOK=$(curl -s http://127.0.0.1:8080/ | grep origin)
+
+if [ -z "$isOK" ]; then
+  echo "nginx is not running!"
+else
+  echo "nginx is running"
+fi
