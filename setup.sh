@@ -1,3 +1,10 @@
+#!/usr/bin/env sh
+
+if [[ $EUID != 0 ]]; then
+  echo "RUN AS ROOT"
+  exit
+fi
+
 echo "add user jsproxy"
 groupadd nobody
 useradd jsproxy -g nobody --create-home
@@ -6,7 +13,7 @@ echo "switch user jsproxy"
 su jsproxy
 cd ~
 
-CDN=https://raw.githubusercontent.com/EtherDream/jsproxy-bin/dist
+CDN=https://cdn.jsdelivr.net/gh/etherdream/jsproxy-bin@master/dist/
 GET="curl -s -O "
 
 echo "download jsproxy server ..."
